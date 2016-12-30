@@ -2,9 +2,9 @@
 <html>
 <head>
 <style>
-body {border-radius: 8px;}
+body {border-radius: 16px;}
 
-#motivacija {
+motivacija {
 	float:right;
 }
 
@@ -12,8 +12,7 @@ body {border-radius: 8px;}
 	margin-left:40%;
 	text-align:center;
 	font-family:'Raleway',sans-serif;
-	text-shadow: 2px 2px;
-	width: 500px;
+	width: 500px;	font size="100"
 }
 
 ul {
@@ -60,14 +59,14 @@ hr {background-color: #3399ff;
 
 <body>
 <div class = "naslov">
-<h1 style = "float:left; width:auto;"> KNJIŽNICA </h1>
-<img id = "#motivacija" width = "60" height = "60" src = "views/{{motivacija}}"/>
+<h1 style = "float:left; width:auto;font size="100""> KNJIŽNICA </h1>
+<img id = "motivacija" width = "100" height = "100" src = "views/{{motivacija}}"/>
 </div>
 
 <div style = "clear:both">
 <hr size = "40"/>
 <ul class = "zaviti-robovi">
-  <li><a href="#">Knjige</a>
+ <img src="views/{{knjiznicar}}" width = "500" height = 348 align="middle"><div style="text-align: center;"> <li><a href="#">Knjige</a>
 	<ul class = "zaviti-robovi">
 		<li><a href = "/vpisKnjige/">Vnesi novo knjigo</a></li>
 		<li><a href = "/knjigaProsta/">Zaloga knjig</a></li>

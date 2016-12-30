@@ -6,7 +6,7 @@ import modeli
 def domaca_stran():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('domaca_stran', slika = slika_ime1, motivacija = slika_ime2)
+    return template('domaca_stran', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/zamudnina/')
 def zamudnina():
@@ -40,7 +40,7 @@ def rezervacijaKnjige():
 def vpisOsebe():
     return template('vpisOsebe')
 
-@route('views/<motivacija>')
+@route('/views/<motivacija>')
 def serve_pictures(motivacija):
     return static_file(motivacija, root='views')
 
