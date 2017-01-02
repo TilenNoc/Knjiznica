@@ -3,18 +3,15 @@
 <head>
 <style>
 body {background: url(views/knjiznicar.png) no-repeat fixed center center;}
-
 motivacija {
 	float:right;
 }
-
 .naslov {
 	margin-left:40%;
 	text-align:center;
 	font-family:'Raleway',sans-serif;
-	width: 500px;	font size="100"
+	width: 500px;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -23,10 +20,8 @@ ul {
     max-width: 150px;
 	position:relative;
 }
-
 li {
 }
-
 li a {
     display: block;
     color: white;
@@ -34,7 +29,6 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 li a:hover {
     background-color: #66ccff;
 }
@@ -45,10 +39,8 @@ li ul
 		 left: 150px;
 		 top:45px;
      }
-
 li:hover ul{
 	display:block;}
-
 hr {background-color: #3399ff;
 	margin: 0; 
 	border-radius:10px;
@@ -59,7 +51,7 @@ hr {background-color: #3399ff;
 
 <body>
 <div class = "naslov">
-<h1 style = "float:left; width:auto;font size="100""> KNJIŽNICA </h1>
+<h1 style = "float:left; width:auto;font-size:50px;"> KNJIŽNICA </h1>
 <img id = "motivacija" width = "150" height = "150" src = "views/{{motivacija}}"/>
 </div>
 
@@ -67,6 +59,7 @@ hr {background-color: #3399ff;
 <hr size = "40"/>
 <ul class = "tabele">
  <div style="text-align: center;">
+	<li><a href="/"><b>Domov</b></a></li> 
 	<li><a href="/izposoja/">Izposoja Knjige</a></li> 
 	<li><a href="#">Knjige</a>
 	<ul class = "tabele">

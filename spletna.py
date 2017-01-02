@@ -10,38 +10,64 @@ def domaca_stran():
 
 @route('/zamudnina/')
 def zamudnina():
-    return template('zamudnina')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('zamudnina', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/izposoja/')
 def izposoja():
-    return template('izposoja')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+##    idOsebe=int(request.query.idOsebe)
+##    idKnjige=int(request.query.idKnjige)
+    return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/vpisKnjige/')
 def vpisKnjige():
-    return template('vpisKnjige')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('vpisKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/knjigaProsta/')
 def knjigaProsta():
-    return template('knjigaProsta')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/storitve/')
 def osebaIzposojenTrenutno():
-    return template('osebaIzposojenTrenutno')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2)
+
+@route('/osebaIzposojenTrenutno/')
+def osebaIzposojenTrenutno():
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/vraciloKnjige/')
 def vraciloKnjige():
-    return template('vraciloKnjige')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/rezervacijaKnjige/')
 def rezervacijaKnjige():
-    return template('rezervacijaKnjige')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('rezervacijaKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/vpisOsebe/')
 def vpisOsebe():
-    return template('vpisOsebe')
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    return template('vpisOsebe', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 @route('/views/<motivacija>')
 def serve_pictures(motivacija):
     return static_file(motivacija, root='views')
+
+
 
 run(debug = True)
