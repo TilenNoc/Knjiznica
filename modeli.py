@@ -82,3 +82,17 @@ def vpisKnjige(naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo):
     sql = '''INSERT INTO knjige (naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo) VALUES (?,?,?,?,?,?)'''
     con.execute(sql,[naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo])
     con.commit()
+
+def vraciloKnjige(idOsebe, idKnjige):
+    '''Oseba naredi vracilo knjige'''
+    datumVracila = datetime.now().date()
+    sql = '''update izposoja set datum_vracila =? where id_osebe=? and id_knjige=?'''
+    con.execute(sql,[datumVracila,idOsebe,idKnjige])
+    con.commit()
+
+def rezervacijaKnjige(idOsebe, idKnjige):
+    '''Oseba naredi rezarvacijo knjige'''
+    datumRezervacije = datetime.now().date()
+    sql = '''INSERT INTO rezervacija (id_osebe, id_knjige, kdaj) VALUES (?,?,?)'''
+    con.execute(sql,[idOsebe, idKnjige, datumRezervacije])
+    con.commit()
