@@ -79,5 +79,12 @@ hr {background-color: #3399ff;
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
  
 </div>
+
+<form action="/vraciloKnjige/">
+ID izkaznice osebe: <input type="text" name="idOsebe">
+ID vrnjene knjige: <input type="text" name="idKnjige">
+<button type="submit">Vrni!</button>
+</form>
+
 </body>
 </html>

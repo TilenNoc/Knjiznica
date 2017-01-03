@@ -79,5 +79,15 @@ hr {background-color: #3399ff;
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
  
 </div>
+
+<form action="/vpisOsebe/">
+Ime: <input type="text" name="ime">
+Priimek: <input type="text" name="priimek">
+Datum rojstva: <input type="text" name="datumRojstva">
+Mail: <input type="text" name="mail">
+Članarina: <input type="text" name="clanarina">
+<button type="submit">Dodaj!</button>
+</form>
+
 </body>
 </html>

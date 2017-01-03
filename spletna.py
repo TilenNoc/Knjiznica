@@ -12,21 +12,39 @@ def domaca_stran():
 def zamudnina():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('zamudnina', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    idOsebe = request.query.idOsebe
+    return template('zamudnina', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, zamudnina = modeli.zamudnina(idOsebe))
+
+##@get('/zamudnina/<idOsebe>/')
+##def poglej_zamudnino(idOseba):
+##    return template('zamudnina',zamudnina = modeli.zamudnina(idOsebe))
 
 @route('/izposoja/')
 def izposoja():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-##    idOsebe=int(request.query.idOsebe)
-##    idKnjige=int(request.query.idKnjige)
-    return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    idOsebe = request.query.idOsebe
+    idKnjige = request.query.idKnjige
+    return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, idKnjige = idKnjige, izposoja = modeli.izposoja(idOsebe, idKnjige))
+
+##@post('/izposoja/')
+##def izposoja():
+##    idOsebe = request.forms.get('idOsebe')
+##    idKnjige = request.forms.get('idKnjige')
+##    modeli.izposoja(idOsebe, idKnjige)
+##    redirect('/')
 
 @route('/vpisKnjige/')
 def vpisKnjige():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('vpisKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    naslov = request.query.naslov
+    avtor = request.query.avtor
+    zalozba = request.query.zalozba
+    leto_izdaje = request.query.leto_izdaje
+    ponatis = request.query.ponatis
+    stevilo = request.query.stevilo
+    return template('vpisKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2, naslov=naslov, avtor=avtor, zalozba=zalozba, leto_izdaje=leto_izdaje, ponatis=ponatis, stevilo=stevilo, vpisKnjige = modeli.vpisKnjige(naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo))
 
 @route('/knjigaProsta/')
 def knjigaProsta():
@@ -50,19 +68,26 @@ def osebaIzposojenTrenutno():
 def vraciloKnjige():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    idOsebe = request.query.idOsebe
+    idKnjige = request.query.idKnjige
+    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, idKnjige = idKnjige, vraciloKnjige = modeli.vraciloKnjige(idOsebe, idKnjige))
 
 @route('/rezervacijaKnjige/')
 def rezervacijaKnjige():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('rezervacijaKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
-
+    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    
 @route('/vpisOsebe/')
 def vpisOsebe():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('vpisOsebe', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    ime = request.query.ime
+    priimek = request.query.priimek
+    datumRojstva = request.query.datumRojstva
+    mail = request.query.mail
+    clanarina = request.query.clanarina
+    return template('vpisOsebe', knjiznicar = slika_ime1, motivacija = slika_ime2, ime=ime, priimek=priimek, datumRojstva=datumRojstva, mail=mail, clanarina=clanarina, vpisOsebe = modeli.vpisOsebe(ime, priimek, datumRojstva, mail, clanarina, zamudnina = 0))
 
 @route('/views/<motivacija>')
 def serve_pictures(motivacija):

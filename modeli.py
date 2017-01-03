@@ -5,31 +5,39 @@ con = sqlite3.connect('Knjiznica.db')
 
 def osebaIzposojen(ime =''):
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
+    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
+    FROM izposoja
+    JOIN oseba
+    ON (id_osebe=st_izkaznice)
+    GROUP BY st_izkaznice'''
     if len(ime)==0:
-        for el in con.execute('''select distinct st_izkaznice,ime,priimek,count(st_izkaznice)
-    from izposoja join oseba on (id_osebe=st_izkaznice) group by st_izkaznice'''):
+        for el in con.execute(sql):
                           print(el)
     else:
-        for el in con.execute('''select distinct st_izkaznice,ime,priimek,count(st_izkaznice)
-    from izposoja join oseba on (id_osebe=st_izkaznice) group by st_izkaznice'''):
+        for el in con.execute(sql):
             if ime == (el[1]+' '+el[2]):
                 return(el)
 
 def osebaIzposojenTrenutno(ime =''):
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
+    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
+    FROM izposoja
+    JOIN oseba
+    ON (id_osebe=st_izkaznice)
+    WHERE datum_vracila is null
+    GROUP BY st_izkaznice;'''
     if len(ime)==0:
-        for el in con.execute('''select distinct st_izkaznice,ime,priimek,count(st_izkaznice)
-    from izposoja join oseba on (id_osebe=st_izkaznice) where datum_vracila is null group by st_izkaznice;'''):
+        for el in con.execute(sql):
                           print(el)
     else:
-        for el in con.execute('''select distinct st_izkaznice,ime,priimek,count(st_izkaznice)
-    from izposoja join oseba on (id_osebe=st_izkaznice) where datum_vracila is null group by st_izkaznice;'''):
+        for el in con.execute(sql):
             if ime == (el[1]+' '+el[2]):
                 return(el)
 
 def knjigaProsta(naslov):
     '''Funkcija bo preverila če je knjiga na zalogi'''
-    steviloVseh = con.execute('select stevilo from knjige where naslov = ?',[naslov]) #koliko teh kjig imamo
+    sql = '''SELECT stevilo FROM knjige WHERE naslov = ?'''
+    steviloVseh = con.execute(sql,[naslov]) #koliko teh kjig imamo
     try:
         st = steviloVseh.fetchone()[0]
     except:
@@ -38,18 +46,20 @@ def knjigaProsta(naslov):
         return 0
     return st
 
-def zamudnina():
+def zamudnina(idOsebe = ''):
     '''izračuna zamudnino za posamezno izposojo'''
     cena = 0.05
     sql = '''SELECT id_osebe AS oseba,
        potek_izposoje,
-       datum_vracila
+       datum_vracila,
+       id_knjige AS knjiga
   FROM izposoja
  WHERE datum_vracila > potek_izposoje OR 
        datum_vracila IS NULL; 
         '''
     for el in con.execute(sql):
         oseba, rok, vracilo = el[0], el[1], el[2]
+        knjiga = el[3]
         if vracilo is None:
             vracilo = datetime.now().date()
             v = vracilo
@@ -61,7 +71,11 @@ def zamudnina():
         razlika = v-r
         razlika = razlika.days
         znesek = round(cena * razlika,2)
-        print(oseba,razlika, znesek)
+        if idOsebe == oseba:
+            return(oseba, knjiga, razlika, znesek)
+        else:
+            return 'Ni zamudnine'
+
 
 def izposoja(idOsebe, idKnjige):
     '''naredimo izposojo'''
@@ -86,7 +100,7 @@ def vpisKnjige(naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo):
 def vraciloKnjige(idOsebe, idKnjige):
     '''Oseba naredi vracilo knjige'''
     datumVracila = datetime.now().date()
-    sql = '''update izposoja set datum_vracila =? where id_osebe=? and id_knjige=?'''
+    sql = '''UPDATE izposoja SET datum_vracila =? WHERE id_osebe=? AND id_knjige=?'''
     con.execute(sql,[datumVracila,idOsebe,idKnjige])
     con.commit()
 
