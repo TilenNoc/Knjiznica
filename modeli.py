@@ -40,8 +40,8 @@ def knjigaProsta(naslov):
     steviloVseh = con.execute(sql,[naslov]) #koliko teh kjig imamo
     try:
         st = steviloVseh.fetchone()[0]
-    except:
-        raise Exception('Napačn naslov oziroma ni knjige')
+    except Exception as napaka:
+        return('Napačn naslov oziroma ni knjige')
     if st == None:
         return 0
     return st
@@ -82,7 +82,7 @@ def izposoja(idOsebe, idKnjige):
     datumIzposoje = datetime.now().date()
     datumVracila = datumIzposoje + timedelta(days = 14)
     sql = '''INSERT INTO izposoja (id_osebe, id_knjige, datum_izposoje, potek_izposoje) VALUES (?,?,?,?)'''
-    con.execute(sql,[idOsebe, idKnjige, datumIzposoje, datumVracila])
+    con.execute(sql,[idOsebe, idKnjige, datumIzposoje, datumVracila]).fetchone()
     con.commit()
 
 def vpisOsebe(ime, priimek, datumRojstva, mail, clanarina, zamudnina = 0):

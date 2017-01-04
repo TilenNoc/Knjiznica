@@ -79,5 +79,11 @@ hr {background-color: #3399ff;
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
  
 </div>
+
+<form action="/knjigaProsta/">
+Naslov knjige: <input type="text" name="naslov">
+<button type="submit">Poglej!</button>
+</form>
+
 </body>
 </html>l>

@@ -81,8 +81,8 @@ hr {background-color: #3399ff;
 </div>
 
 <form action="/izposoja/">
-ID izkaznice osebe: <input type="text" name="idOsebe">
-ID željene izposojene knjige: <input type="text" name="idKnjige">
+ID osebe: <input type="text" name="idOsebe">
+ID knjige: <input type="text" name="idKnjige">
 <button type="submit">Izposodi!</button>
 </form>
 

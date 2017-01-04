@@ -79,5 +79,12 @@ hr {background-color: #3399ff;
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
  
 </div>
+
+<form action="/rezervacijaKnjige/">
+ID osebe: <input type="text" name="idOsebe">
+ID knjige: <input type="text" name="idKnjige">
+<button type="submit">Rezerviraj!</button>
+</form>
+
 </body>
 </html>

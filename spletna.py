@@ -1,4 +1,4 @@
-from bottle import route, run, template,static_file, get, post, request
+from bottle import route, run, template,static_file, get, post, request, redirect
 import modeli
 
 
@@ -27,6 +27,12 @@ def izposoja():
     idKnjige = request.query.idKnjige
     return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, idKnjige = idKnjige, izposoja = modeli.izposoja(idOsebe, idKnjige))
 
+##@get('/izposoja/')
+##def izposoja():
+##    slika_ime1 = 'knjiznicar.png'
+##    slika_ime2 = 'motivacija.png'
+##    return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2)
+##
 ##@post('/izposoja/')
 ##def izposoja():
 ##    idOsebe = request.forms.get('idOsebe')
@@ -50,19 +56,15 @@ def vpisKnjige():
 def knjigaProsta():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    naslov = request.query.naslov
+    return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, naslov = naslov, knjigaProsta = modeli.knjigaProsta(naslov))
 
 @route('/storitve/')
 def osebaIzposojenTrenutno():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2)
-
-@route('/osebaIzposojenTrenutno/')
-def osebaIzposojenTrenutno():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    ime = request.query.ime
+    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno(ime))
 
 @route('/vraciloKnjige/')
 def vraciloKnjige():
@@ -76,7 +78,9 @@ def vraciloKnjige():
 def rezervacijaKnjige():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    idOsebe = request.query.idOsebe
+    idKnjige = request.query.idKnjige
+    return template('rezervacijaKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, idKnjige = idKnjige, rezervacijaKnjige = modeli.rezervacijaKnjige(idOsebe, idKnjige))
     
 @route('/vpisOsebe/')
 def vpisOsebe():
