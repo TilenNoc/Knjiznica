@@ -79,6 +79,7 @@ hr {background-color: #3399ff;
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
  
 </div>
+
 <form action="/zamudnina/">
 ID osebe: <input type="text" name="idOsebe">
 <button type="submit">Pokaži!</button>

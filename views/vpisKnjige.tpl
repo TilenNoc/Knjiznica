@@ -80,6 +80,7 @@ hr {background-color: #3399ff;
  
 </div>
 
+
 <form method="post" action="/vpisKnjige/">
 Naslov: <input type="text" name="naslov">
 Avtor: <input type="text" name="avtor">

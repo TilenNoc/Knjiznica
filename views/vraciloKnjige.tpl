@@ -80,6 +80,7 @@ hr {background-color: #3399ff;
  
 </div>
 
+
 <form method="post" action="/vraciloKnjige/">
 ID izkaznice osebe: <input type="text" name="idOsebe">
 ID vrnjene knjige: <input type="text" name="idKnjige">

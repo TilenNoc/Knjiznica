@@ -89,7 +89,7 @@ def zamudninaOseba(idOsebe):
     for el in con.execute(sql, [idOsebe]):
         oseba, rok, vracilo, knjiga = el[0], el[1], el[2], el[3]
     razlika, znesek = izracunaZamudnino(rok, vracilo)
-    return (oseba, knjiga, razlika, znesek)
+    return (oseba, knjiga, razlika, znesek
 
 
 def izposoja(idOsebe, idKnjige):

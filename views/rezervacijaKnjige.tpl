@@ -80,6 +80,7 @@ hr {background-color: #3399ff;
  
 </div>
 
+
 <form method="post" action="/rezervacijaKnjige/">
 ID osebe: <input type="text" name="idOsebe">
 ID knjige: <input type="text" name="idKnjige">

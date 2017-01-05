@@ -80,6 +80,7 @@ hr {background-color: #3399ff;
  
 </div>
 
+
 <form method="post" action="/osebaIzposojenTrenutno/">
 Ime osebe: <input type="text" name="ime">
 <button type="submit">Pokaži!</button>

@@ -8,6 +8,7 @@ def domaca_stran():
     slika_ime2 = 'motivacija.png'
     return template('domaca_stran', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
+<<<<<<< HEAD
 @route('/knjigaProsta/')
 def knjigaProsta():
     slika_ime1 = 'knjiznicar.png'
