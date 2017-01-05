@@ -12,7 +12,7 @@ def osebaIzposojen(ime =''):
     GROUP BY st_izkaznice'''
     if len(ime)==0:
         for el in con.execute(sql):
-                          print(el)
+            print(el)
     else:
         for el in con.execute(sql):
             if ime == (el[1]+' '+el[2]):
@@ -26,9 +26,11 @@ def osebaIzposojenTrenutno(ime =''):
     ON (id_osebe=st_izkaznice)
     WHERE datum_vracila is null
     GROUP BY st_izkaznice;'''
+    sez = []
     if len(ime)==0:
         for el in con.execute(sql):
-                          print(el)
+            sez.append(el)
+        return sez
     else:
         for el in con.execute(sql):
             if ime == (el[1]+' '+el[2]):
@@ -107,7 +109,6 @@ def zamudninaOseba(idOsebe):
     except Exception as napaka:
         return('Ni zamudnine')
 
-
 def izposoja(idOsebe, idKnjige):
     '''naredimo izposojo'''
     datumIzposoje = datetime.now().date()
@@ -121,8 +122,6 @@ def vpisOsebe(ime, priimek, datumRojstva, mail, clanarina, zamudnina = 0):
     sql = '''INSERT INTO oseba (ime, priimek, datum_rojstva, mail, clanarina, zamudnina) VALUES (?,?,?,?,?,?)'''
     con.execute(sql,[ime, priimek, datumRojstva, mail, clanarina, zamudnina])
     con.commit()
-
-
 
 def vpisKnjige(naslov, avtor, zalozba, leto_izdaje, ponatis, stevilo):
     '''v bazo dodamo novo knjigo'''

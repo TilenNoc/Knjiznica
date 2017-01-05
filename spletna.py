@@ -8,6 +8,7 @@ def domaca_stran():
     slika_ime2 = 'motivacija.png'
     return template('domaca_stran', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
+#nimava sploh gumba za to
 @route('/knjigaProsta/')
 def knjigaProsta():
     slika_ime1 = 'knjiznicar.png'
@@ -15,13 +16,16 @@ def knjigaProsta():
     naslov = request.query.naslov
     return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, naslov = naslov, knjigaProsta = modeli.knjigaProsta(naslov))
 
-@route('/osebaIzposojenTrenutno/')
+@get('/osebaIzposojenTrenutno/')
 def osebaIzposojenTrenutno():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
     ime = request.query.ime
-    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno(ime))
-
+    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno())
+##    if ime:
+##        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno(ime))
+##    else:
+##        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = None)
 
 @get('/zamudnina/')
 def zamudnina():
