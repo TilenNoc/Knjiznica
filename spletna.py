@@ -22,7 +22,6 @@ def osebaIzposojenTrenutno():
     ime = request.query.ime
     return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno(ime))
 
-
 ##@route('/zamudnina/')
 ##def zamudnina():
 ##    slika_ime1 = 'knjiznicar.png'
