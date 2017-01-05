@@ -1,7 +1,7 @@
-% rebase('osnova.tpl', naslov='Zamudnine', motivacija='motivacija.png')
+% rebase('osnova.tpl', naslov='Zamudnine Vsi', motivacija='motivacija.png')
 <div>
 
-<form action="/zamudnina/">
+<form action="/zamudninaVsi/">
 ID osebe: <input type="text" name="idOsebe">
 <button type="submit">Pokaži!</button>
 </form>

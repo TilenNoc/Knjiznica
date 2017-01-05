@@ -59,7 +59,7 @@ def knjigaProsta():
     naslov = request.query.naslov
     return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, naslov = naslov, knjigaProsta = modeli.knjigaProsta(naslov))
 
-@route('/storitve/')
+@route('/osebaIzposojenTrenutno/')
 def osebaIzposojenTrenutno():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
