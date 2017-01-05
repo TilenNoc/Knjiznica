@@ -46,9 +46,24 @@ def knjigaProsta(naslov):
         return 0
     return st
 
-def zamudnina(idOsebe = ''):
-    '''izračuna zamudnino za posamezno izposojo'''
+def izracunaZamudnino(rok, vracilo):
+    '''izracuna zamudnino'''
     cena = 0.05
+    if vracilo is None:
+        vracilo = datetime.now().date()
+        v = vracilo
+    else:
+        vracilo = vracilo.split('-')
+        v = date(int(vracilo[0]),int(vracilo[1]),int(vracilo[2]))
+    rok = rok.split('-')
+    r = date(int(rok[0]),int(rok[1]),int(rok[2]))
+    razlika = v-r
+    razlika = razlika.days
+    znesek = round(cena * razlika,2)
+    return (razlika, znesek)
+
+def zamudnina():
+    '''izračuna zamudnino za vse osebe'''
     sql = '''SELECT id_osebe AS oseba,
        potek_izposoje,
        datum_vracila,
@@ -58,23 +73,23 @@ def zamudnina(idOsebe = ''):
        datum_vracila IS NULL; 
         '''
     for el in con.execute(sql):
-        oseba, rok, vracilo = el[0], el[1], el[2]
-        knjiga = el[3]
-        if vracilo is None:
-            vracilo = datetime.now().date()
-            v = vracilo
-        else:
-            vracilo = vracilo.split('-')
-            v = date(int(vracilo[0]),int(vracilo[1]),int(vracilo[2]))
-        rok = rok.split('-')
-        r = date(int(rok[0]),int(rok[1]),int(rok[2]))
-        razlika = v-r
-        razlika = razlika.days
-        znesek = round(cena * razlika,2)
-        if idOsebe == oseba:
-            return(oseba, knjiga, razlika, znesek)
-        else:
-            return 'Ni zamudnine'
+        oseba, rok, vracilo, knjiga = el[0], el[1], el[2], el[3]
+        razlika, znesek = izracunaZamudnino(rok, vracilo)
+        print(oseba, knjiga, razlika, znesek)
+
+def zamudninaOseba(idOsebe):
+    '''izračuna zamudnino za posamezno izposojo'''
+    sql = '''SELECT id_osebe AS oseba,
+       potek_izposoje,
+       datum_vracila,
+       id_knjige AS knjiga
+  FROM izposoja
+ WHERE id_osebe = ?
+        '''
+    for el in con.execute(sql, [idOsebe]):
+        oseba, rok, vracilo, knjiga = el[0], el[1], el[2], el[3]
+    razlika, znesek = izracunaZamudnino(rok, vracilo)
+    return (oseba, knjiga, razlika, znesek
 
 
 def izposoja(idOsebe, idKnjige):
