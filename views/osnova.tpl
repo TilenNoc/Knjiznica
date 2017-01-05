@@ -80,7 +80,7 @@ hr {background-color: #3399ff;
 	</ul>
 	</li>
 	<li><a href="/osebaIzposojenTrenutno/">Seznam izposojenih knjig</a></li>
-	<li><a href="/zamudnina/">Zamudnine</a></li> 
+	<li><a href="/zamudninaVsi/">Zamudnine vseh</a></li> 
 	<li><a href="/vraciloKnjige/">Vračilo knjige</a></li> 
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
 </div>

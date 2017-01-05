@@ -1,6 +1,6 @@
 % rebase('osnova.tpl', naslov='Vpis osebe', motivacija='motivacija.png')
 <div>
-<form action="/vpisOsebe/">
+<form method="post" action="/vpisOsebe/">
 Ime: <input type="text" name="ime">
 Priimek: <input type="text" name="priimek">
 Datum rojstva: <input type="text" name="datumRojstva">

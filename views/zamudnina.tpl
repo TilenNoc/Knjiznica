@@ -5,7 +5,7 @@
 ID osebe: <input type="text" name="idOsebe">
 <button type="submit">Pokaži!</button>
 </form>
-
+{{zamudnina}}
 </div>
 </body>
 </html>

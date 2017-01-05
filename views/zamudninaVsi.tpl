@@ -2,10 +2,9 @@
 <div>
 
 <form action="/zamudninaVsi/">
-ID osebe: <input type="text" name="idOsebe">
-<button type="submit">Pokaži!</button>
-</form>
 
+</form>
+{{zamudnina}}
 </div>
 </body>
 </html>
