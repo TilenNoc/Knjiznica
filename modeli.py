@@ -3,20 +3,27 @@ from datetime import date, datetime, timedelta
 
 con = sqlite3.connect('Knjiznica.db')
 
-def osebaIzposojen(ime =''):
+def osebaIzposojenEdn(idOsebe):
+    '''Funkcija bo vrnila  izposojene knjige in stevilo izposojenih knjig od osebe'''
+    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
+    FROM izposoja
+    JOIN oseba
+    ON (id_osebe=st_izkaznice)
+    GROUP BY st_izkaznice'''
+    for el in con.execute(sql):
+        if idOsebe==el[0]:
+            return(el)
+        
+    
+def osebaIzposojen():
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
     sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
     FROM izposoja
     JOIN oseba
     ON (id_osebe=st_izkaznice)
     GROUP BY st_izkaznice'''
-    if len(ime)==0:
-        for el in con.execute(sql):
-            print(el)
-    else:
-        for el in con.execute(sql):
-            if ime == (el[1]+' '+el[2]):
-                return(el)
+    for el in con.execute(sql):
+        print(el)
 
 def osebaIzposojenTrenutno(ime =''):
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
@@ -27,14 +34,22 @@ def osebaIzposojenTrenutno(ime =''):
     WHERE datum_vracila is null
     GROUP BY st_izkaznice;'''
     sez = []
-    if len(ime)==0:
-        for el in con.execute(sql):
-            sez.append(el)
-        return sez
-    else:
-        for el in con.execute(sql):
-            if ime == (el[1]+' '+el[2]):
-                return(el)
+    for el in con.execute(sql):
+        sez.append(el)
+    return sez
+
+def osebaIzposojenTrenutnoEdn(idOsebe):
+    '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
+    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
+    FROM izposoja
+    JOIN oseba
+    ON (id_osebe=st_izkaznice)
+    WHERE datum_vracila is null
+    GROUP BY st_izkaznice;'''
+    sez = []
+    for el in con.execute(sql):
+        if idOsebe==el[0]:
+            return el
 
 def knjigaProsta(idKnjige):
     '''Funkcija bo preverila če je knjiga na zalogi'''
@@ -49,7 +64,8 @@ def knjigaProsta(idKnjige):
     sql = '''SELECT COUNT(id_knjige) FROM izposoja WHERE id_knjige = ? and datum_vracila is NULL'''
     s = con.execute(sql,[idKnjige])
     s1 = s.fetchone()[0]
-    return int(st-s1)
+    rez = st-s1
+    return rez
 
 def izracunaZamudnino(rok, vracilo):
     '''izracuna zamudnino'''

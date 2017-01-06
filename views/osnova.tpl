@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -83,6 +83,8 @@ hr {background-color: #3399ff;
 	<li><a href="/zamudninaVsi/">Zamudnine vseh</a></li> 
 	<li><a href="/vraciloKnjige/">Vračilo knjige</a></li> 
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
+	<li><a href="/poisciKnjigo/">Poišči ID knjige</a></li> 
+	<li><a href="/poisciOsebo/">Poišči ID osebe</a></li> 
 </div>
 </div>
 {{!base}}

@@ -1,8 +1,8 @@
 % rebase('osnova.tpl', naslov='Izposoja knjige', motivacija='motivacija.png')
 <div>
 <form method="post" action="/izposoja/">
-<li>ID osebe: <input type="text" name="idOsebe"></li>
-<li>ID knjige: <input type="text" name="idKnjige"></li>
+ID osebe: <input type="text" name="idOsebe">
+ID knjige: <input type="text" name="idKnjige">
 <button type="submit">Izposodi!</button>
 </form>
 </div>

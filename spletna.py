@@ -9,13 +9,16 @@ def domaca_stran():
     return template('domaca_stran', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
 #nimava sploh gumba za to
-@route('/knjigaProsta/')
+#a ni knjiga na zalogi to?
+@get('/knjigaProsta/')
 def knjigaProsta():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    naslov = request.query.naslov
-    return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, naslov = naslov, knjigaProsta = modeli.knjigaProsta(naslov))
-
+    idKnjige = request.query.idKnjige
+    if idKnjige:
+        return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = modeli.knjigaProsta(idKnjige))
+    else:
+        return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = None)
 @get('/osebaIzposojenTrenutno/')
 def osebaIzposojenTrenutno():
     slika_ime1 = 'knjiznicar.png'
@@ -36,6 +39,30 @@ def zamudnina():
         return template('zamudnina',knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, zamudnina = modeli.zamudninaOseba(idOsebe))
     else:
         return template('zamudnina', knjiznicar = slika_ime1, motivacija = slika_ime2, zamudnina = None)
+
+
+@get('/poisciKnjigo/')
+def poisciKnjigo():
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    naslov = request.query.naslov
+    if naslov:
+        return template('poisciKnjigo',knjiznicar = slika_ime1, motivacija = slika_ime2, naslov= naslov, poisciKnjigo = modeli.poisciKnjigo(naslov))
+    else:
+        return template('poisciKnjigo', knjiznicar = slika_ime1, motivacija = slika_ime2, poisciKnjigo = None)
+
+@get('/poisciOsebo/')
+def poisciOsebo():
+    slika_ime1 = 'knjiznicar.png'
+    slika_ime2 = 'motivacija.png'
+    ime = request.query.ime
+    priimek = request.query.priimek
+    if ime:
+        return template('poisciOsebo',knjiznicar = slika_ime1, motivacija = slika_ime2, ime= ime,priimek=priimek, poisciOsebo = modeli.poisciOsebo(ime,priimek))
+    else:
+        return template('poisciOsebo', knjiznicar = slika_ime1, motivacija = slika_ime2, poisciOsebo = None)
+
+
     
 @get('/zamudninaVsi/')
 def zamudninaVsi():
