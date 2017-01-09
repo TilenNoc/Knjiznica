@@ -4,12 +4,23 @@
 <form action="/zamudninaVsi/">
 
 </form>
+<table>
+  <tr>
+    <th>ID osebe</th>
+    <th>ID knjige</th>
+	<th>Zamujeni dnevi</th>
+	<th>Zamudnina</th>
+  </tr>
+  % for el in zamudnina:
+		<tr>
+			<td>{{el[0]}}</td>
+			<td>{{el[1]}}</td>
+			<td>{{el[2]}}</td>
+			<td>{{el[3]}}</td>
+		</tr>
+  % end
+</table>
 
-<% for el in zamudnina:
-	oseba, knjiga, razlika, placilo = el
-	izpis = ('Oseba: ' + str(oseba) + ', Knjiga: ' + str(knjiga) + ', Zamujeni dnevi: ' + str(razlika) + ', Zamudnina: ' + str(placilo))
-%>
-{{izpis}}<br>
 
 </div>
 </body>

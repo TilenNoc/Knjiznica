@@ -1,21 +1,4 @@
-% rebase('osnova.tpl', naslov='Id osebe', motivacija='motivacija.png')
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
+% rebase('osnova.tpl', naslov='Id osebe')
 
 <div>
 <form action="/poisciOsebo/">
@@ -31,11 +14,13 @@ Priimek osebe: <input type="text" name="priimek">
     <th>Primek</th>
     <th>Id Izkaznice</th>
   </tr>
+  % for oseba in osebe:
   <tr>
-    <td>name</td>
-    <td>name="priimek"</td>
-    <td>{{poisciOsebo}}</td>
+    <td>{{oseba['ime']}}</td>
+    <td>{{oseba['priimek']}}</td>
+    <td>{{oseba['st_izkaznice']}}</td>
   </tr>
+  % end
 </table>
 
 </body>

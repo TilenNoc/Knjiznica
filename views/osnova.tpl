@@ -7,6 +7,22 @@
 	
 <style>
 body {background: url(/views/knjiznicar.png) no-repeat fixed center center;}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 motivacija {
 	float:right;
 }
@@ -79,7 +95,8 @@ hr {background-color: #3399ff;
 		<li><a href = "/zamudnina/">Zamudnina neke osebe</a></li>
 	</ul>
 	</li>
-	<li><a href="/osebaIzposojenTrenutno/">Seznam izposojenih knjig</a></li>
+	<li><a href="/vseIzposoje/">Seznam izposojenih knjig</a></li>
+	<li><a href="/osebaIzposojenTrenutno/">Seznam izposojenih knjig osebe</a></li>
 	<li><a href="/zamudninaVsi/">Zamudnine vseh</a></li> 
 	<li><a href="/vraciloKnjige/">Vračilo knjige</a></li> 
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 

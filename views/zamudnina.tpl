@@ -1,21 +1,5 @@
 % rebase('osnova.tpl', naslov='Zamudnine', motivacija='motivacija.png')
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 <div>
 
 <form action="/zamudnina/">
@@ -23,33 +7,28 @@ ID osebe: <input type="text" name="idOsebe">
 <button type="submit">Pokaži!</button>
 </form>
 
-<% if zamudnina is not None:
-		if len(zamudnina)!=4:
-			izpis = ('Ni zamudnine')
-		else:
-			oseba, knjiga, razlika, placilo = zamudnina
-			izpis = ('Oseba: ' + str(oseba) + ', Knjiga: ' + str(knjiga) + ', Zamujeni dnevi: ' + str(razlika) + ', Zamudnina: ' + str(placilo))
-
-%>
-
-{{izpis}}<br>
-
-</div>
-
 <table>
   <tr>
-    <th>Oseba</th>
-    <th>Knjiga</th>
-    <th>Dnevi prekoračeno</th>
-    <th>Plačilo</th>
+    <th>ID osebe</th>
+    <th>ID knjige</th>
+	<th>Zamujeni dnevi</th>
+	<th>Zamudnina</th>
   </tr>
-  <tr>
-    <td>oseba</td>
-    <td>knjiga</td>
-    <td>razlika</td>
-    <td>placilo</td>
-  </tr>
+  % if zamudnina is not None:
+		% if(zamudnina !="Ni zamudnine"):
+			<tr>
+				<td>{{zamudnina[0]}}</td>
+				<td>{{zamudnina[1]}}</td>
+				<td>{{zamudnina[2]}}</td>
+				<td>{{zamudnina[3]}}</td>
+			</tr>
+		% else:
+			{{zamudnina}}
+		% end
+% end
 </table>
+</div>
+
 
 </body>
 </html>

@@ -25,7 +25,7 @@ def osebaIzposojen():
     for el in con.execute(sql):
         print(el)
 
-def osebaIzposojenTrenutno(ime =''):
+def osebaIzposojenTrenutno():
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
     sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
     FROM izposoja
@@ -58,14 +58,15 @@ def knjigaProsta(idKnjige):
     try:
         st = steviloVseh.fetchone()[0]
     except Exception as napaka:
-        return('Napačn naslov oziroma ni knjige')
+        return [idKnjige,('Napačn naslov oziroma ni knjige')]
     if st == None:
-        return 0
+        return [idKnjige,rez]
     sql = '''SELECT COUNT(id_knjige) FROM izposoja WHERE id_knjige = ? and datum_vracila is NULL'''
     s = con.execute(sql,[idKnjige])
     s1 = s.fetchone()[0]
     rez = st-s1
-    return rez
+    sez = [idKnjige,rez]
+    return sez
 
 def izracunaZamudnino(rok, vracilo):
     '''izracuna zamudnino'''
@@ -167,18 +168,16 @@ def opravljenaRezervacija(idOsebe,idKnjige):
 
 def poisciOsebo(ime,priimek):
     '''Poišče osebo'''
-    sql = '''select st_izkaznice from oseba where ime=? and priimek=?;'''
-    try:
-        a = con.execute(sql,[ime,priimek]).fetchone()
-        return a[0]
-    except Exception as napaka:
-        return('Osebe s tem imenom ni v bazi')
+    sql = '''select st_izkaznice, ime, priimek from oseba where ime=? and priimek=?;'''
+    osebe = []
+    for a in con.execute(sql,[ime,priimek]):
+        osebe.append({'st_izkaznice': a[0], 'ime': a[1], 'priimek': a[2]})
+    return osebe
 
 def poisciKnjigo(naslov):
     '''Poišče osebo'''
-    sql = '''select id from knjige where naslov=?;'''
-    try:
-        a = con.execute(sql,[naslov]).fetchone()
-        return a[0]
-    except Exception as napaka:
-        return('Knjige s tem imenom ni v bazi')
+    sql = '''select naslov,id from knjige where naslov=?;'''
+    knjige = []
+    for a in con.execute(sql,[naslov]):
+        knjige.append({'naslov': a[0], 'id': a[1]})
+    return knjige

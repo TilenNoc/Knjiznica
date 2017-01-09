@@ -2,15 +2,14 @@
 <div>
 
 <form action="/osebaIzposojenTrenutno/">
-Ime in priimek osebe: <input type="text" name="ime">
+ID osebe: <input type="text" name="idOsebe">
 <button type="submit">Pokaži!</button>
 </form>
 
-<% for el in osebaIzposojenTrenutno:
-	id, ime, priimek, stKnjig = el
-	izpis = ('ID osebe: ' + str(id) + ', Ime: ' + ime + ', Priimek: ' + priimek + ', Število izposojenih knjig: ' + str(stKnjig))
-%>
-{{izpis}}<br>
+% if osebaIzposojenTrenutno != None:
+	% id, ime, priimek, stKnjig = osebaIzposojenTrenutno
+	<h3>{{ime}}</h3>
+% end
 
 </div>
 </body>

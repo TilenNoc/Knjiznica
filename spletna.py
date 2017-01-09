@@ -46,21 +46,17 @@ def poisciKnjigo():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
     naslov = request.query.naslov
-    if naslov:
-        return template('poisciKnjigo',knjiznicar = slika_ime1, motivacija = slika_ime2, naslov= naslov, poisciKnjigo = modeli.poisciKnjigo(naslov))
-    else:
-        return template('poisciKnjigo', knjiznicar = slika_ime1, motivacija = slika_ime2, poisciKnjigo = None)
-
+    knjige = modeli.poisciKnjigo(naslov)
+    return template('poisciKnjigo',knjiznicar = slika_ime1, motivacija = slika_ime2, knjige=knjige)
+   
 @get('/poisciOsebo/')
 def poisciOsebo():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
     ime = request.query.ime
     priimek = request.query.priimek
-    if ime:
-        return template('poisciOsebo',knjiznicar = slika_ime1, motivacija = slika_ime2, ime= ime,priimek=priimek, poisciOsebo = modeli.poisciOsebo(ime,priimek))
-    else:
-        return template('poisciOsebo', knjiznicar = slika_ime1, motivacija = slika_ime2, poisciOsebo = None)
+    osebe = modeli.poisciOsebo(ime, priimek)
+    return template('poisciOsebo',knjiznicar = slika_ime1, motivacija = slika_ime2, osebe=osebe)
 
 
     

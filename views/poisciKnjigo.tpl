@@ -1,21 +1,5 @@
-% rebase('osnova.tpl', naslov='Id knjige', motivacija='motivacija.png')
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+% rebase('osnova.tpl', naslov='Id knjige')
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 <div>
 <form action="/poisciKnjigo/">
 Naslov knjige: <input type="text" name="naslov">
@@ -26,13 +10,14 @@ Naslov knjige: <input type="text" name="naslov">
 <table>
   <tr>
     <th>Naslov knjige</th>
-    <th>Id Izkaznice</th>
+    <th>ID knjige</th>
   </tr>
+  % for knjiga in knjige:
   <tr>
-    <td>naslov</td>
-    <td>{{poisciKnjigo}}</td>
+    <td>{{knjiga['naslov']}}</td>
+    <td>{{knjiga['id']}}</td>
   </tr>
-
+  % end
 </table>
 </body>
 </html>

@@ -6,10 +6,20 @@
 ID knjige: <input type="text" name="idKnjige">
 <button type="submit">Poglej!</button>
 </form>
-{{knjigaProsta}}<br>
 
-
+<table>
+  <tr>
+    <th>ID knjige</th>
+    <th>Na zalogi</th>
+  </tr>
+	<tr>
+	%if knjigaProsta!=None:
+		<td>{{knjigaProsta[0]}}</td>
+		<td>{{knjigaProsta[1]}}</td>
+	%end
+	</tr>
+% end
+</table>
 </div>
-Število knjig na zalogi z id=TLE ZJ UNA CIFRA MORE PRIDT K SVA JO GOR DALA je: {{knjigaProsta}}
 </body>
 </html>
