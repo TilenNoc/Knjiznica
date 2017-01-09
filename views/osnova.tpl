@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
 <style>
-body {background: url(/views/knjiznicar.png) no-repeat fixed center center;}
+body {background: url(/views/knjiznicar.png) no-repeat 350px 250px;}
 
 table {
     font-family: arial, sans-serif;
