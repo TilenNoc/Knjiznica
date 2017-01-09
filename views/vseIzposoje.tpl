@@ -5,7 +5,23 @@
 
 </form>
 
-{{vseIzposoje}}
+
+<table>
+  <tr>
+    <th>ID osebe</th>
+    <th>Ime</th>
+	<th>Priimek</th>
+	<th>Število izposojenih knjig</th>
+  </tr>
+  % for el in vseIzposoje:
+		<tr>
+			<td>{{el[0]}}</td>
+			<td>{{el[1]}}</td>
+			<td>{{el[2]}}</td>
+			<td>{{el[3]}}</td>
+		</tr>
+  % end
+</table>
 
 </div>
 </body>

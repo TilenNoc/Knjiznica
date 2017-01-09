@@ -93,10 +93,10 @@ hr {background-color: #3399ff;
 	<ul class = "tabele2">
 		<li><a href = "/vpisOsebe/">Vnesi novo osebo</a></li>
 		<li><a href = "/zamudnina/">Zamudnina neke osebe</a></li>
+		<li><a href="/osebaIzposojenTrenutno/">Seznam izposojenih knjig osebe</a></li>
 	</ul>
 	</li>
 	<li><a href="/vseIzposoje/">Seznam izposojenih knjig</a></li>
-	<li><a href="/osebaIzposojenTrenutno/">Seznam izposojenih knjig osebe</a></li>
 	<li><a href="/zamudninaVsi/">Zamudnine vseh</a></li> 
 	<li><a href="/vraciloKnjige/">Vračilo knjige</a></li> 
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
