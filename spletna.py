@@ -19,16 +19,21 @@ def knjigaProsta():
         return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = modeli.knjigaProsta(idKnjige))
     else:
         return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = None)
+
 @get('/osebaIzposojenTrenutno/')
 def osebaIzposojenTrenutno():
     slika_ime1 = 'knjiznicar.png'
     slika_ime2 = 'motivacija.png'
-    ime = request.query.ime
-    return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno())
-##    if ime:
-##        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutno(ime))
-##    else:
-##        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, ime = ime, osebaIzposojenTrenutno = None)
+    idOsebe = request.query.idOsebe
+    if idOsebe:
+        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutnoEdn(idOsebe))
+    else:
+        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, osebaIzposojenTrenutno = None)
+
+@get('/vseIzposoje/')
+def vseIzposoje():
+    return template('vseIzposoje', vseIzposoje = modeli.osebaIzposojenTrenutno())
+
 
 @get('/zamudnina/')
 def zamudnina():

@@ -40,16 +40,13 @@ def osebaIzposojenTrenutno(ime =''):
 
 def osebaIzposojenTrenutnoEdn(idOsebe):
     '''Funkcija bo vrnila seznam oseb, ki imajo izposojene knjige in stevilo izposojenih knjig'''
-    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(st_izkaznice)
+    sql = '''SELECT DISTINCT st_izkaznice, ime, priimek, COUNT(*)
     FROM izposoja
     JOIN oseba
     ON (id_osebe=st_izkaznice)
     WHERE datum_vracila is null
-    GROUP BY st_izkaznice;'''
-    sez = []
-    for el in con.execute(sql):
-        if idOsebe==el[0]:
-            return el
+    AND id_osebe = ?;'''
+    return con.execute(sql, [idOsebe]).fetchone()
 
 def knjigaProsta(idKnjige):
     '''Funkcija bo preverila če je knjiga na zalogi'''
