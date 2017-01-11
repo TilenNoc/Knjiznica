@@ -14,7 +14,12 @@ flex-flow: column;
 #b{order:2;}
 #c{order:3;}
 #d{order:4;}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b2dba6ea6ed2690f44dae003d21e14e584b9425
 body {background: url(/views/knjiznicar.png) no-repeat 350px 250px;}
+
 
 table {
     font-family: arial, sans-serif;
@@ -83,7 +88,8 @@ hr {background-color: #3399ff;
 </head>
 
 <body>
-<div id="parent">
+
+<div id="parent"> </div>
 <div id=a class = "naslov">
 <h1 style = "float:left; width:auto;font-size:50px;"> {{naslov}} </h1>
 <img id = "motivacija" width = "150" height = "150" src = "/views/{{motivacija}}"/>
@@ -118,6 +124,7 @@ hr {background-color: #3399ff;
 	<li><a href="/poisciOsebo/">Poišči ID osebe</a></li> 
 </div>
 </div>
+
 
 {{!base}}
 </body>
