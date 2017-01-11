@@ -126,6 +126,17 @@ def rezervacijaKnjige():
     idKnjige = request.forms.get('idKnjige')
     modeli.rezervacijaKnjige(idOsebe, idKnjige)
     redirect('/')
+
+@get('/opravljenaRezervacija/')
+def opravljenaRezervacija():
+    return template('opravljenaRezervacija')
+
+@post('/opravljenaRezervacija/')
+def opravljenaRezervacija():
+    idOsebe = request.forms.get('idOsebe')
+    idKnjige = request.forms.get('idKnjige')
+    modeli.opravljenaRezervacija(idOsebe, idKnjige)
+    redirect('/')
     
 @get('/vpisOsebe/')
 def vpisOsebe():

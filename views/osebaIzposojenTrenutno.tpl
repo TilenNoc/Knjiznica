@@ -1,5 +1,5 @@
 % rebase('osnova.tpl', naslov='Izposoje', motivacija='motivacija.png')
-<div>
+<div id=c class = "izpis" style = "float-left; position: absolute; left: 150px; top: 158px; width">
 
 <form action="/osebaIzposojenTrenutno/">
 ID osebe: <input type="text" name="idOsebe">
