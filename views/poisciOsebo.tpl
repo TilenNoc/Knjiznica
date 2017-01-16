@@ -1,6 +1,5 @@
 % rebase('osnova.tpl', naslov='Id osebe')
 
-<div id=c class = "izpis" style = "float-left; position: absolute; left: 150px; top: 158px; width: 300px">
 <form action="/poisciOsebo/">
 Ime osebe: <input type="text" name="ime">
 Priimek osebe: <input type="text" name="priimek">
@@ -21,6 +20,3 @@ Priimek osebe: <input type="text" name="priimek">
   </tr>
   % end
 </table>
-</div>
-</body>
-</html>

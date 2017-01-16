@@ -6,20 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
 <style>
-#parent{
-display:flex;
-flex-flow: column;
-}
-#a{order:1;}
-#b{order:2;}
-#c{order:3;}
-#d{order:4;}
-<<<<<<< HEAD
-=======
-
->>>>>>> 9b2dba6ea6ed2690f44dae003d21e14e584b9425
-body {background: url(/views/knjiznicar.png) no-repeat 350px 250px;}
-
 
 table {
     font-family: arial, sans-serif;
@@ -81,24 +67,29 @@ hr {background-color: #3399ff;
 	margin: 0; 
 	border-radius:10px;
 	}
-	
+#kazalo {
+   float: left;
+   width: 150px;
+   text-align: center;
+}
+#vsebina {
+   margin-left: 150px;
+}
 </style>
 </head>
 
 <body>
-
-<div id="parent"> </div>
-<div id=a class = "naslov">
+<div class = "naslov">
 <h1 style = "float:left; width:auto;font-size:50px;"> {{naslov}} </h1>
 <img id = "motivacija" width = "150" height = "150" src = "/views/{{motivacija}}"/>
 </div>
-<div >
 </div>
-<div id= b style = "clear:both">
 <hr size = "40"/>
+
+<div style = "clear:both">
+<div id="kazalo">
 <ul class = "tabele">
- <div style="text-align: center;">
-	<li><a href="/"><b>Domov</b></a></li> 
+ 	<li><a href="/"><b>Domov</b></a></li> 
 	<li><a href="/izposoja/">Izposoja Knjige</a></li> 
 	<li><a href="#">Knjige</a>
 	<ul class = "tabele">
@@ -120,10 +111,14 @@ hr {background-color: #3399ff;
 	<li><a href="/opravljenaRezervacija/">Zaključi rezervacijo</a></li>
 	<li><a href="/poisciKnjigo/">Poišči ID knjige</a></li> 
 	<li><a href="/poisciOsebo/">Poišči ID osebe</a></li> 
+</ul>
 </div>
-</div>
-
+<div id="vsebina">
 
 {{!base}}
+
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -10,70 +10,52 @@ def domaca_stran():
 
 @get('/knjigaProsta/')
 def knjigaProsta():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
     idKnjige = request.query.idKnjige
     if idKnjige:
-        return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = modeli.knjigaProsta(idKnjige))
+        return template('knjigaProsta', idKnjige = idKnjige, knjigaProsta = modeli.knjigaProsta(idKnjige))
     else:
-        return template('knjigaProsta', knjiznicar = slika_ime1, motivacija = slika_ime2, idKnjige = idKnjige, knjigaProsta = None)
+        return template('knjigaProsta', idKnjige = idKnjige, knjigaProsta = None)
 
 @get('/osebaIzposojenTrenutno/')
 def osebaIzposojenTrenutno():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
     idOsebe = request.query.idOsebe
     if idOsebe:
-        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutnoEdn(idOsebe))
+        return template('osebaIzposojenTrenutno', idOsebe = idOsebe, osebaIzposojenTrenutno = modeli.osebaIzposojenTrenutnoEdn(idOsebe))
     else:
-        return template('osebaIzposojenTrenutno', knjiznicar = slika_ime1, motivacija = slika_ime2, osebaIzposojenTrenutno = None)
+        return template('osebaIzposojenTrenutno', osebaIzposojenTrenutno = None)
 
 @get('/vseIzposoje/')
 def vseIzposoje():
     return template('vseIzposoje', vseIzposoje = modeli.osebaIzposojenTrenutno())
 
-
 @get('/zamudnina/')
 def zamudnina():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
     idOsebe = request.query.idOsebe
     if idOsebe:
-        return template('zamudnina',knjiznicar = slika_ime1, motivacija = slika_ime2, idOsebe = idOsebe, zamudnina = modeli.zamudninaOseba(idOsebe))
+        return template('zamudnina', idOsebe = idOsebe, zamudnina = modeli.zamudninaOseba(idOsebe))
     else:
-        return template('zamudnina', knjiznicar = slika_ime1, motivacija = slika_ime2, zamudnina = None)
-
+        return template('zamudnina', zamudnina = None)
 
 @get('/poisciKnjigo/')
 def poisciKnjigo():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
     naslov = request.query.naslov
     knjige = modeli.poisciKnjigo(naslov)
-    return template('poisciKnjigo',knjiznicar = slika_ime1, motivacija = slika_ime2, knjige=knjige)
+    return template('poisciKnjigo', knjige=knjige)
    
 @get('/poisciOsebo/')
 def poisciOsebo():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
     ime = request.query.ime
     priimek = request.query.priimek
     osebe = modeli.poisciOsebo(ime, priimek)
-    return template('poisciOsebo',knjiznicar = slika_ime1, motivacija = slika_ime2, osebe=osebe)
-
-
-    
+    return template('poisciOsebo', osebe=osebe)
+   
 @get('/zamudninaVsi/')
 def zamudninaVsi():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('zamudninaVsi',knjiznicar = slika_ime1, motivacija = slika_ime2, zamudnina = modeli.zamudnina())
+    return template('zamudninaVsi', zamudnina = modeli.zamudnina())
 
 @get('/izposoja/')
 def izposoja():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('izposoja', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    return template('izposoja')
 
 @post('/izposoja/')
 def izposoja():
@@ -84,9 +66,7 @@ def izposoja():
 
 @get('/vpisKnjige/')
 def vpisKnjige():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('vpisKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    return template('vpisKnjige')
 
 @post('/vpisKnjige/')
 def vpisKnjige():
@@ -101,9 +81,7 @@ def vpisKnjige():
 
 @get('/vraciloKnjige/')
 def vraciloKnjige():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('vraciloKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    return template('vraciloKnjige')
 
 @post('/vraciloKnjige/')
 def vraciloKnjige():
@@ -114,9 +92,7 @@ def vraciloKnjige():
 
 @get('/rezervacijaKnjige/')
 def rezervacijaKnjige():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('rezervacijaKnjige', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    return template('rezervacijaKnjige')
 
 @post('/rezervacijaKnjige/')
 def rezervacijaKnjige():
@@ -138,9 +114,7 @@ def opravljenaRezervacija():
     
 @get('/vpisOsebe/')
 def vpisOsebe():
-    slika_ime1 = 'knjiznicar.png'
-    slika_ime2 = 'motivacija.png'
-    return template('vpisOsebe', knjiznicar = slika_ime1, motivacija = slika_ime2)
+    return template('vpisOsebe')
 
 @post('/vpisOsebe/')
 def vpisOsebe():
