@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,8 +10,6 @@ body {background: url(/views/knjiznicar.png) no-repeat 350px 250px;}
 
 table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
 }
 
 td, th {
