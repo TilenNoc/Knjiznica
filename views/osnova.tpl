@@ -6,7 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
 <style>
+#parent{
+display:flex;
+flex-flow: column;
+}
+#a{order:1;}
+#b{order:2;}
+#c{order:3;}
+#d{order:4;}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b2dba6ea6ed2690f44dae003d21e14e584b9425
 body {background: url(/views/knjiznicar.png) no-repeat 350px 250px;}
+
 
 table {
     font-family: arial, sans-serif;
@@ -16,6 +29,9 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
+tr:nth-child(odd) {
+	background-color: #ffffff;
 }
 
 tr:nth-child(even) {
@@ -70,12 +86,15 @@ hr {background-color: #3399ff;
 </head>
 
 <body>
-<div class = "naslov">
+
+<div id="parent"> </div>
+<div id=a class = "naslov">
 <h1 style = "float:left; width:auto;font-size:50px;"> {{naslov}} </h1>
 <img id = "motivacija" width = "150" height = "150" src = "/views/{{motivacija}}"/>
 </div>
-
-<div style = "clear:both">
+<div >
+</div>
+<div id= b style = "clear:both">
 <hr size = "40"/>
 <ul class = "tabele">
  <div style="text-align: center;">
@@ -98,10 +117,13 @@ hr {background-color: #3399ff;
 	<li><a href="/zamudninaVsi/">Zamudnine vseh</a></li> 
 	<li><a href="/vraciloKnjige/">Vračilo knjige</a></li> 
 	<li><a href="/rezervacijaKnjige/">Rezervacija knjige</a></li> 
+	<li><a href="/opravljenaRezervacija/">Zaključi rezervacijo</a></li>
 	<li><a href="/poisciKnjigo/">Poišči ID knjige</a></li> 
 	<li><a href="/poisciOsebo/">Poišči ID osebe</a></li> 
 </div>
 </div>
+
+
 {{!base}}
 </body>
 </html>

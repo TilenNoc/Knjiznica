@@ -8,8 +8,6 @@ def domaca_stran():
     slika_ime2 = 'motivacija.png'
     return template('domaca_stran', knjiznicar = slika_ime1, motivacija = slika_ime2)
 
-#nimava sploh gumba za to
-#a ni knjiga na zalogi to?
 @get('/knjigaProsta/')
 def knjigaProsta():
     slika_ime1 = 'knjiznicar.png'
@@ -125,6 +123,17 @@ def rezervacijaKnjige():
     idOsebe = request.forms.get('idOsebe')
     idKnjige = request.forms.get('idKnjige')
     modeli.rezervacijaKnjige(idOsebe, idKnjige)
+    redirect('/')
+
+@get('/opravljenaRezervacija/')
+def opravljenaRezervacija():
+    return template('opravljenaRezervacija')
+
+@post('/opravljenaRezervacija/')
+def opravljenaRezervacija():
+    idOsebe = request.forms.get('idOsebe')
+    idKnjige = request.forms.get('idKnjige')
+    modeli.opravljenaRezervacija(idOsebe, idKnjige)
     redirect('/')
     
 @get('/vpisOsebe/')
