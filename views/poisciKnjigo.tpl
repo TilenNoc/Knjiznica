@@ -1,6 +1,5 @@
-% rebase('osnova.tpl', naslov='Id knjige')
+% rebase('osnova.tpl', naslov='Id knjige', motivacija='motivacija.png')
 
-<div id=c class = "izpis" style = "float-left; position: absolute; left: 150px; top: 158px; width: 300px">
 <form action="/poisciKnjigo/">
 Naslov knjige: <input type="text" name="naslov">
 <button type="submit">Najdi!</button>
@@ -18,6 +17,3 @@ Naslov knjige: <input type="text" name="naslov">
   </tr>
   % end
 </table>
-</div>
-</body>
-</html>
