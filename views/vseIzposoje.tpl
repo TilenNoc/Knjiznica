@@ -1,10 +1,8 @@
 % rebase('osnova.tpl', naslov='Izposoje', motivacija='motivacija.png')
-<div class = "izpis" style = "float-left; position: absolute; left: 150px; top: 158px">
 
 <form action="/vseIzposoje/">
 
 </form>
-
 
 <table>
   <tr>
@@ -22,7 +20,3 @@
 		</tr>
   % end
 </table>
-
-</div>
-</body>
-</html>
